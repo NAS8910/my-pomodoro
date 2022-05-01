@@ -1,1 +1,1 @@
-My Pomodoro
+My Pomodoro App

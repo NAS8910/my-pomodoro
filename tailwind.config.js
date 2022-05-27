@@ -9,6 +9,7 @@ module.exports = {
         },
         "serene-yellow": "#F1B814",
         "serene-red": "#BD1E51",
+        "serene-red-light": "#ca4b74",
         "serene-black": "#2f2f2f",
         "serene-white": "#FFFFFF",
       },

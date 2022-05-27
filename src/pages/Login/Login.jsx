@@ -9,7 +9,7 @@ const Login = () => {
         <div className="signup-container w-1/5">
           <form
             action=""
-            className="border-2 border-serene-red rounded-2xl rounded-bl-none flex flex-col gap-4 p-6"
+            className="border-2 border-serene-red rounded-2xl flex flex-col gap-4 p-6"
           >
             <h1 className="font-bold text-xl text-serene-red">Login</h1>
 
@@ -20,7 +20,7 @@ const Login = () => {
               Email
             </label>
             <input
-              className="py-2 px-4 rounded-2xl rounded-tr-none text-sm font-semibold placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
+              className="py-2 px-4 rounded-2xl text-sm font-semibold placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
               placeholder="johnwick@gmail.com"
               type="email"
               name=""
@@ -34,7 +34,7 @@ const Login = () => {
               Password
             </label>
             <input
-              className="py-2 px-4 rounded-2xl rounded-tr-none text-sm font-semibold placeholder:text-gray-500 placeholder:text-xl placeholder:font-normal border-2  border-serene-red"
+              className="py-2 px-4 rounded-2xl text-sm font-semibold placeholder:text-gray-500 placeholder:text-xl placeholder:font-normal border-2  border-serene-red"
               placeholder="·········"
               type="password"
               name=""

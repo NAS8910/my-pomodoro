@@ -9,7 +9,7 @@ const Signup = () => {
         <div className="signup-container w-1/5">
           <form
             action=""
-            className="border-2 border-serene-red rounded-2xl rounded-bl-none flex flex-col gap-4 p-8"
+            className="border-2 border-serene-red rounded-2xl flex flex-col gap-4 p-8"
           >
             <h1 className="font-bold text-xl text-serene-red">Signup</h1>
 
@@ -20,7 +20,7 @@ const Signup = () => {
               First Name
             </label>
             <input
-              className="text-sm font-semibold rounded-2xl rounded-tr-none py-2 px-4 placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
+              className="text-sm font-semibold rounded-2xl py-2 px-4 placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
               placeholder="John"
               type="text"
               name=""
@@ -34,7 +34,7 @@ const Signup = () => {
               Last Name
             </label>
             <input
-              className="text-sm font-semibold rounded-2xl rounded-tr-none py-2 px-4 placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
+              className="text-sm font-semibold rounded-2xl py-2 px-4 placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
               placeholder="Wick"
               type="text"
               name=""
@@ -48,7 +48,7 @@ const Signup = () => {
               Email
             </label>
             <input
-              className="text-sm font-semibold rounded-2xl rounded-tr-none py-2 px-4 placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
+              className="text-sm font-semibold rounded-2xl py-2 px-4 placeholder:text-gray-500 placeholder:text-sm placeholder:font-normal border-2  border-serene-red"
               placeholder="johnwick@gmail.com"
               type="email"
               name=""
@@ -62,7 +62,7 @@ const Signup = () => {
               Password
             </label>
             <input
-              className="text-sm font-semibold rounded-2xl rounded-tr-none py-2 px-4 placeholder:text-gray-500 placeholder:text-xl placeholder:font-normal border-2  border-serene-red"
+              className="text-sm font-semibold rounded-2xl py-2 px-4 placeholder:text-gray-500 placeholder:text-xl placeholder:font-normal border-2  border-serene-red"
               placeholder="·········"
               type="password"
               name=""
@@ -76,7 +76,7 @@ const Signup = () => {
               Password Again
             </label>
             <input
-              className="text-sm font-semibold rounded-2xl rounded-tr-none py-2 px-4 placeholder:text-gray-500 placeholder:text-xl placeholder:font-normal border-2  border-serene-red"
+              className="text-sm font-semibold rounded-2xl py-2 px-4 placeholder:text-gray-500 placeholder:text-xl placeholder:font-normal border-2  border-serene-red"
               placeholder="·········"
               type="password"
               name=""

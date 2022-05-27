@@ -7,7 +7,7 @@ import TaskPage from "./pages/TaskPage/TaskPage";
 function App() {
   return (
     <div className="App bg-serene-white ">
-      <TaskPage />
+      <LandingPage />
     </div>
   );
 }

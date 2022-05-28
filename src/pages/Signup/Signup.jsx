@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { BiError } from "react-icons/bi";
 import axios from "axios";
 import { useAuthContext } from "../../context/auth-context";
 import { Link, useNavigate } from "react-router-dom";

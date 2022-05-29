@@ -46,7 +46,6 @@ const Login = () => {
           email: response.data.foundUser.email,
         },
       });
-      console.log(response);
 
       navigate("/tasks");
     } catch (err) {

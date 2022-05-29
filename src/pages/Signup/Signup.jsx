@@ -80,8 +80,6 @@ const Signup = () => {
             },
           });
 
-          console.log(response);
-
           navigate("/tasks");
         } catch (err) {
           console.log(err);

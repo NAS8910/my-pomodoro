@@ -17,8 +17,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [showLoginError, setShowLoginError] = useState({
-    showError: false,
-    message: "Login Error",
+    showError: true,
+    message: "Login to Add Tasks",
   });
 
   const { auth, setAuth } = useAuthContext();
@@ -80,7 +80,7 @@ const Login = () => {
   return (
     <div className="Login">
       <Navbar />
-      <main className="flex justify-center mt-32">
+      <main className="flex justify-center mt-16">
         <div className="signup-container w-1/5">
           <form
             onSubmit={loginSubmitHandler}

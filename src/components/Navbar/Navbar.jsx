@@ -40,17 +40,17 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="right-navbar flex flex-row items-center justify-between mr-12">
-        <Link to="/tasks">
-          <button
-            href=""
-            className="font-bold text-lg ml-8 text-serene-purple-800 hover:text-serene-red-light"
-          >
-            tasks
-          </button>
-        </Link>
+        <button
+          onClick={() => {
+            auth.isLoggedIn ? navigate("/tasks") : navigate("/login");
+          }}
+          className="font-bold text-lg ml-8 text-serene-purple-800"
+        >
+          tasks
+        </button>
 
         {auth.isLoggedIn ? (
-          <div className="ml-8 mr-8 flex flex-col items-start text-serene-purple-800 hover:text-serene-red-light relative">
+          <div className="ml-8 mr-8 flex flex-col items-start text-serene-purple-800 relative">
             <div
               onClick={() => setShowProfileDropdown(!showProfileDropdown)}
               className="cursor-pointer"

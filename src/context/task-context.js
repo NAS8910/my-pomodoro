@@ -50,7 +50,6 @@ const TaskContextProvider = ({ children }) => {
         }
       );
       setTasks(response.data.habits);
-      console.log(response.data.habits);
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +67,6 @@ const TaskContextProvider = ({ children }) => {
         }
       );
       setTasks(response.data.habits);
-      console.log(response.data.habits);
     } catch (err) {
       console.log(err);
     }

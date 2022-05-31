@@ -43,14 +43,14 @@ const Navbar = () => {
         <Link to="/tasks">
           <button
             href=""
-            className="font-bold text-lg ml-8 hover:text-serene-red-light"
+            className="font-bold text-lg ml-8 text-serene-purple-800 hover:text-serene-red-light"
           >
             tasks
           </button>
         </Link>
 
         {auth.isLoggedIn ? (
-          <div className="ml-8 mr-8 flex flex-col items-start text-serene-red relative">
+          <div className="ml-8 mr-8 flex flex-col items-start text-serene-purple-800 hover:text-serene-red-light relative">
             <div
               onClick={() => setShowProfileDropdown(!showProfileDropdown)}
               className="cursor-pointer"

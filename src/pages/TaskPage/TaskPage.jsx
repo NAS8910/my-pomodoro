@@ -15,6 +15,7 @@ const TaskPage = () => {
     title: "",
     description: "",
     time: "",
+    isDone: false,
   });
 
   const [isEditingTask, setIsEditingTask] = useState({
@@ -27,6 +28,7 @@ const TaskPage = () => {
       title: "",
       description: "",
       time: "",
+      isDone: false,
     });
     setShowAddTaskModal(false);
 
@@ -103,6 +105,7 @@ const TaskPage = () => {
                       title: "",
                       description: "",
                       time: "",
+                      isDone: false,
                     });
                   }}
                   className="border-2 border-serene-red-light text-serene-red font-semibold rounded-xl px-4 py-2"
@@ -153,6 +156,7 @@ const TaskPage = () => {
                   title: "",
                   description: "",
                   time: "",
+                  isDone: false,
                 });
                 setIsEditingTask({
                   editing: false,
@@ -169,8 +173,21 @@ const TaskPage = () => {
               return (
                 <div className="single-task-container flex items-center border-dashed border-2 border-serene-red-light py-4 px-8 rounded-lg cursor-pointer w-4/5">
                   <div className="task-title-container flex items-center">
-                    <input type="checkbox" name="" id="" className="w-4 h-4" />
-                    <p className="font-bold text-serene-purple-800 ml-2">
+                    <input
+                      onChange={() => {
+                        task.isDone = !task.isDone;
+                        editTask(task._id, task);
+                      }}
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="w-4 h-4"
+                    />
+                    <p
+                      className={`font-bold text-serene-purple-800 ml-2 ${
+                        task.isDone ? "line-through" : "no-underline"
+                      }`}
+                    >
                       {task.title}
                     </p>
                   </div>

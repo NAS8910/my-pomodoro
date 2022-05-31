@@ -60,7 +60,7 @@ const TaskContextProvider = ({ children }) => {
     try {
       const response = await axios.post(
         `/api/habits/${taskId}`,
-        { taskObj },
+        { habit: taskObj },
         {
           headers: {
             authorization: auth.token,
@@ -68,6 +68,7 @@ const TaskContextProvider = ({ children }) => {
         }
       );
       setTasks(response.data.habits);
+      console.log(response.data.habits);
     } catch (err) {
       console.log(err);
     }

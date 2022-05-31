@@ -9,12 +9,17 @@ import { useTaskContext } from "../../context/task-context";
 const TaskPage = () => {
   const { auth } = useAuthContext();
 
-  const { tasks, createTask } = useTaskContext();
+  const { tasks, createTask, deleteTask, editTask } = useTaskContext();
 
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
     time: "",
+  });
+
+  const [isEditingTask, setIsEditingTask] = useState({
+    editing: false,
+    editingTaskId: "",
   });
 
   const addTaskHandler = () => {
@@ -24,7 +29,10 @@ const TaskPage = () => {
       time: "",
     });
     setShowAddTaskModal(false);
-    createTask(taskData);
+
+    isEditingTask.editing
+      ? editTask(isEditingTask.editingTaskId, taskData)
+      : createTask(taskData);
   };
 
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
@@ -44,13 +52,13 @@ const TaskPage = () => {
               className="flex flex-col gap-4"
             >
               <button
-                className="ml-auto text-2xl text-serene-yellow"
+                className="ml-auto text-2xl text-serene-red"
                 onClick={() => setShowAddTaskModal(false)}
               >
                 <AiOutlineClose />
               </button>
               <input
-                className="border-2 border-serene-yellow px-4 py-2 rounded-xl font-medium"
+                className="border-2 border-serene-red-light px-4 py-2 rounded-xl font-medium"
                 onChange={(e) =>
                   setTaskData({ ...taskData, title: e.target.value })
                 }
@@ -62,7 +70,7 @@ const TaskPage = () => {
                 placeholder="Add Title"
               />
               <textarea
-                className="border-2 border-serene-yellow px-4 py-2 rounded-xl font-medium"
+                className="border-2 border-serene-red-light px-4 py-2 rounded-xl font-medium"
                 onChange={(e) =>
                   setTaskData({ ...taskData, description: e.target.value })
                 }
@@ -75,7 +83,7 @@ const TaskPage = () => {
                 placeholder="Add Description"
               ></textarea>
               <input
-                className="border-2 border-serene-yellow px-4 py-2 rounded-xl font-medium"
+                className="border-2 border-serene-red-light px-4 py-2 rounded-xl font-medium"
                 onChange={(e) =>
                   setTaskData({ ...taskData, time: e.target.value })
                 }
@@ -97,16 +105,25 @@ const TaskPage = () => {
                       time: "",
                     });
                   }}
-                  className="border-2 border-serene-yellow text-serene-yellow font-semibold rounded-xl px-4 py-2"
+                  className="border-2 border-serene-red-light text-serene-red font-semibold rounded-xl px-4 py-2"
                 >
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className="border-2 border-serene-yellow bg-serene-yellow font-medium text-serene-white rounded-xl px-8 py-2"
-                >
-                  Add
-                </button>
+                {isEditingTask.editing ? (
+                  <button
+                    type="submit"
+                    className="add-task-button border-2 border-serene-red-light bg-serene-red-light font-medium text-serene-white rounded-xl px-8 py-2"
+                  >
+                    Save
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="add-task-button border-2 border-serene-red-light bg-serene-red-light font-medium text-serene-white rounded-xl px-8 py-2"
+                  >
+                    Add
+                  </button>
+                )}
               </div>
             </form>
           </div>
@@ -124,14 +141,25 @@ const TaskPage = () => {
           You have {tasks.length} tasks for today, All the Best!
         </p>
 
-        <div className="task-list-container p-4 bg-serene-white rounded-xl my-8 mx-12">
-          <div className="flex justify-between mt-4 mb-4 items-center">
-            <p className="text-normal text-serene-yellow font-bold text-left ml-24">
-              To-Do List
+        <div className="task-list-container px-4 py-12 bg-serene-white rounded-xl my-8 mx-12">
+          <div className="flex justify-between mb-4 items-center">
+            <p className="text-normal text-serene-purple-800 font-bold text-left ml-24">
+              My Tasks
             </p>
             <button
-              onClick={() => setShowAddTaskModal(true)}
-              className="mr-24 text-2xl rounded-full px-4 py-1 bg-serene-yellow text-serene-white"
+              onClick={() => {
+                setShowAddTaskModal(true);
+                setTaskData({
+                  title: "",
+                  description: "",
+                  time: "",
+                });
+                setIsEditingTask({
+                  editing: false,
+                  editingTaskId: "",
+                });
+              }}
+              className="mr-24 text-2xl rounded-full px-4 py-1 bg-serene-red-light text-serene-white"
             >
               +
             </button>
@@ -139,23 +167,35 @@ const TaskPage = () => {
           <div className="task-list flex flex-col gap-6 items-center">
             {tasks.map((task) => {
               return (
-                <div className="single-task-container flex items-center border-dashed border-2 border-serene-yellow py-4 px-8 rounded-lg cursor-pointer hover:border-solid w-4/5">
+                <div className="single-task-container flex items-center border-dashed border-2 border-serene-red-light py-4 px-8 rounded-lg cursor-pointer w-4/5">
                   <div className="task-title-container flex items-center">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      className="w-4 h-4 text-serene-yellow"
-                    />
-                    <p className="font-bold text-serene-yellow ml-2">
+                    <input type="checkbox" name="" id="" className="w-4 h-4" />
+                    <p className="font-bold text-serene-purple-800 ml-2">
                       {task.title}
                     </p>
                   </div>
                   <div className="task-action-buttons flex gap-8 ml-auto">
-                    <button className="text-2xl text-serene-yellow">
+                    <button
+                      onClick={() => {
+                        setShowAddTaskModal(true);
+                        setTaskData({
+                          title: task.title,
+                          description: task.description,
+                          time: task.time,
+                        });
+                        setIsEditingTask({
+                          editing: true,
+                          editingTaskId: task._id,
+                        });
+                      }}
+                      className="text-2xl text-serene-red-light"
+                    >
                       <FaEdit />
                     </button>
-                    <button className="text-2xl text-serene-yellow">
+                    <button
+                      onClick={() => deleteTask(task._id)}
+                      className="text-2xl text-serene-red-light"
+                    >
                       <AiFillDelete />
                     </button>
                   </div>

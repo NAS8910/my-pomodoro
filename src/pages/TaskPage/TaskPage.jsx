@@ -5,9 +5,12 @@ import { FaEdit } from "react-icons/fa";
 import { AiFillDelete, AiOutlineClose } from "react-icons/ai";
 import { useAuthContext } from "../../context/auth-context";
 import { useTaskContext } from "../../context/task-context";
+import { useNavigate } from "react-router-dom";
 
 const TaskPage = () => {
   const { auth } = useAuthContext();
+
+  const navigate = useNavigate();
 
   const { tasks, createTask, deleteTask, editTask } = useTaskContext();
 
@@ -171,17 +174,22 @@ const TaskPage = () => {
           <div className="task-list flex flex-col gap-6 items-center">
             {tasks.map((task) => {
               return (
-                <div className="single-task-container flex items-center border-dashed border-2 border-serene-red-light py-4 px-8 rounded-lg cursor-pointer w-4/5">
+                <div
+                  key={task._id}
+                  onClick={() => navigate(`/tasks/${task._id}`)}
+                  className="single-task-container flex items-center border-dashed border-2 border-serene-red-light py-4 px-8 rounded-lg cursor-pointer w-4/5"
+                >
                   <div className="task-title-container flex items-center">
                     <input
-                      onChange={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         task.isDone = !task.isDone;
                         editTask(task._id, task);
                       }}
                       type="checkbox"
                       name=""
                       id=""
-                      className="w-4 h-4"
+                      className="w-5 h-5"
                     />
                     <p
                       className={`font-bold text-serene-purple-800 ml-2 ${
@@ -193,7 +201,8 @@ const TaskPage = () => {
                   </div>
                   <div className="task-action-buttons flex gap-8 ml-auto">
                     <button
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setShowAddTaskModal(true);
                         setTaskData({
                           title: task.title,
@@ -210,7 +219,10 @@ const TaskPage = () => {
                       <FaEdit />
                     </button>
                     <button
-                      onClick={() => deleteTask(task._id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteTask(task._id);
+                      }}
                       className="text-2xl text-serene-red-light"
                     >
                       <AiFillDelete />

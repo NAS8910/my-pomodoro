@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import TaskPage from "./pages/TaskPage/TaskPage";
+import Task from "./pages/Task/Task";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/tasks" element={<TaskPage />} />
+        <Route path="/tasks/:taskId" element={<Task />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>

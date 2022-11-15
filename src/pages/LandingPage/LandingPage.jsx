@@ -19,7 +19,7 @@ const LandingPage = () => {
         <div className="left-landing-container flex justify-center">
           <div className="left-cta-container w-3/4 mt-32 flex flex-col items-start">
             <h1 className="text-6xl font-bold text-serene-purple-800 text-left">
-              Stay Focused
+              Nirbahy
             </h1>
             <h1 className="text-6xl font-bold text-serene-red text-left">
               Avoid Distractions
